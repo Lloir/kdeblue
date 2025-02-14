@@ -13,7 +13,6 @@ rpm-ostree install chromium \
 
 # Download & set up AppImageLauncher (instead of RPM)
 echo "Installing AppImageLauncher..."
-mkdir -p /usr/local/bin
 curl -L -o /usr/local/bin/AppImageLauncher "https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-lite-2.2.0-travis995-0f91801-x86_64.AppImage"
 chmod +x /usr/local/bin/AppImageLauncher
 
