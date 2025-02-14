@@ -14,7 +14,7 @@ rpm-ostree install chromium \
 # Add Mullvad VPN repository & install Mullvad VPN + Mullvad Browser
 echo "Setting up Mullvad VPN & Mullvad Browser..."
 curl --tlsv1.3 -fsS https://repository.mullvad.net/rpm/stable/mullvad.repo | tee /etc/yum.repos.d/mullvad.repo
-rpm-ostree update --install mullvad-vpn mullvad-browser
+rpm-ostree install mullvad-vpn mullvad-browser
 
 # Add ProtonVPN repo & install ProtonVPN
 echo "Setting up ProtonVPN..."
