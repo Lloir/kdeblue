@@ -11,10 +11,6 @@ echo "Installing Chromium..."
 rpm-ostree install chromium \
     libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app
 
-# Add Mullvad VPN repository & install Mullvad VPN + Mullvad Browser
-echo "Setting up Mullvad VPN & Mullvad Browser..."
-curl --tlsv1.3 -fsS https://repository.mullvad.net/rpm/stable/mullvad.repo | tee /etc/yum.repos.d/mullvad.repo
-
 echo "Installing Mullvad packages (skipping post-install scripts)..."
 rpm-ostree install --setopt=tsflags=nodocs --setopt=tsflags=noscripts mullvad-vpn mullvad-browser
 
