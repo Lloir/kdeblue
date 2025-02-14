@@ -11,10 +11,6 @@ echo "Installing Chromium..."
 rpm-ostree install chromium \
     libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app
 
-# Install Steam via Flatpak (fixes dependency issue)
-echo "Installing Steam (Flatpak)..."
-flatpak install -y flathub com.valvesoftware.Steam
-
 # Download & set up AppImageLauncher (instead of RPM)
 echo "Installing AppImageLauncher..."
 mkdir -p /usr/local/bin
