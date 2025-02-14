@@ -11,13 +11,6 @@ echo "Installing Chromium..."
 rpm-ostree install chromium \
     libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app
 
-# Add ProtonVPN repo & install ProtonVPN
-echo "Setting up ProtonVPN..."
-wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-unstable/protonvpn-beta-release/protonvpn-beta-release-1.0.2-1.noarch.rpm"
-rpm-ostree install ./protonvpn-beta-release-1.0.2-1.noarch.rpm
-rm -f ./protonvpn-beta-release-1.0.2-1.noarch.rpm
-rpm-ostree install proton-vpn-gnome-desktop
-
 # Install Crossover
 echo "Installing Crossover..."
 curl -L -o /tmp/crossover.rpm "https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover-24.0.6-1.rpm"
