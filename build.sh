@@ -11,9 +11,6 @@ echo "Installing Chromium..."
 rpm-ostree install chromium \
     libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app
 
-echo "Installing Mullvad packages (skipping post-install scripts)..."
-rpm-ostree install --setopt=tsflags=nodocs --setopt=tsflags=noscripts mullvad-vpn mullvad-browser
-
 # Add ProtonVPN repo & install ProtonVPN
 echo "Setting up ProtonVPN..."
 wget "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-unstable/protonvpn-beta-release/protonvpn-beta-release-1.0.2-1.noarch.rpm"
