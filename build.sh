@@ -11,12 +11,6 @@ echo "Installing Chromium..."
 rpm-ostree install chromium \
     libappindicator-gtk3 gnome-shell-extension-appindicator gnome-extensions-app
 
-# Install Crossover
-echo "Installing Crossover..."
-curl -L -o /tmp/crossover.rpm "https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover-24.0.6-1.rpm"
-rpm-ostree install /tmp/crossover.rpm
-rm -f /tmp/crossover.rpm
-
 # Install Steam via Flatpak (fixes dependency issue)
 echo "Installing Steam (Flatpak)..."
 flatpak install -y flathub com.valvesoftware.Steam
