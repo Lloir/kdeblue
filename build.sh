@@ -4,20 +4,35 @@ set -ouex pipefail
 
 RELEASE="$(rpm -E %fedora)"
 
+echo "Starting custom Kinoite build..."
 
-### Install packages
+# Install AppImageLauncher
+echo "Installing AppImageLauncher..."
+curl -L -o /tmp/appimagelauncher.rpm "https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm"
+rpm-ostree install /tmp/appimagelauncher.rpm
+rm -f /tmp/appimagelauncher.rpm
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# Install Chromium & Steam
+echo "Installing Chromium & Steam..."
+rpm-ostree install chromium steam
 
-# this installs a package from fedora repos
-rpm-ostree install screen appimagelauncher
+# Add Mullvad VPN repo & install Mullvad VPN + Mullvad Browser
+echo "Setting up Mullvad VPN..."
+curl --tlsv1.3 -fsS https://repository.mullvad.net/rpm/stable/mullvad.repo | tee /etc/yum.repos.d/mullvad.repo
+rpm-ostree update --install mullvad-vpn mullvad-browser
 
-# this would install a package from rpmfusion
-# rpm-ostree install vlc
+# Install Crossover
+echo "Installing Crossover..."
+curl -L -o /tmp/crossover.rpm "https://media.codeweavers.com/pub/crossover/cxlinux/demo/crossover-24.0.6-1.rpm"
+rpm-ostree install /tmp/crossover.rpm
+rm -f /tmp/crossover.rpm
 
-#### Example for enabling a System Unit File
+# Download & set up OrcaSlicer AppImage
+echo "Installing OrcaSlicer..."
+mkdir -p /usr/local/bin
+curl -L -o /usr/local/bin/OrcaSlicer "https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_V2.3.0-dev.AppImage"
+chmod +x /usr/local/bin/OrcaSlicer
+
+echo "Custom Kinoite build complete!"
 
 systemctl enable podman.socket
